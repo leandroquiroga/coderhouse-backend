@@ -1,2 +1,2 @@
 # coderhouse-backend
-En este repositorio de pondran todos los desafio del cuerso 
+En este repositorio de pondran todos los desafio del curso 
