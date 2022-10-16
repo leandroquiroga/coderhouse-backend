@@ -2,7 +2,18 @@
 Servidor creado con express usando contenido del desafio numero 2
 
 ## Ejecutar programa 
+```
+  git clone: https://github.com/leandroquiroga/coderhouse-backend.git
 
+  cd desafio-tres
+
+  npm install 
+
+  npm run dev
+
+  Codear a pleno :)
+
+```
 ## Consigna
 * 1- Realizar un proyecto de servidor basado en Node.js que utilice el modulo express e implemente los siguientes endpoints en el puerto 8080: <br>
       - a) Ruta get '/productos' que devuelva un array con todos los productos disponibles en el servidor <br> 
