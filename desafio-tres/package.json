@@ -1,0 +1,25 @@
+{
+  "name": "desafio-tres",
+  "version": "1.0.0",
+  "description": "Servidor realizado con Express.js usando la clase del desafio dos ",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "Express.js",
+    "Node.js",
+    "Backend",
+    "Coderhouse"
+  ],
+  "author": "Leandro Quiroga",
+  "license": "MIT ",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
