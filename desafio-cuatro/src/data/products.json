@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Arroz",
+    "price": 123.53,
+    "image": "https://static.cotodigital3.com.ar/sitios/fotos/full/00247400/00247497.jpg?3.0.138f",
+    "id": 1
+  },
+  {
+    "title": "Fideos",
+    "price": 90.5,
+    "image": "https://cdn11.bigcommerce.com/s-3stx4pub31/images/stencil/1280x1280/products/1384/3751/tallarin__69727.1654263708.jpg?c=2",
+    "id": 2
+  }
+]
