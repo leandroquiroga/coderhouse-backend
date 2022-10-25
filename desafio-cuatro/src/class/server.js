@@ -1,10 +1,11 @@
-const express = require('express');
-const cors = require('cors');
-const route = require('../routes');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import { config } from 'dotenv';
+config();
 
+import { route } from '../routes/index.js'
 
-class Server {
+export class Server {
   
   constructor(){
     this.app  = express();
@@ -17,13 +18,13 @@ class Server {
   };
 
   middleware(){
-    this.app.use('/api/productos/nuevo', express.static('public'));
-    this.app.use(express.urlencoded({extended: true}));
+    this.app.use(express.urlencoded({extended: false}));
     this.app.use(cors());
     this.app.use(express.json());
+    this.app.use(express.static('public'));
   }
   routes(){
-    this.app.use('/api/productos', route);
+    this.app.use('/api/productos', route );
   };
 
   listen(){
@@ -34,6 +35,3 @@ class Server {
     });
   }
 };
-
-
-module.exports = Server;
