@@ -1,20 +1,19 @@
-const { Router } = require('express');
-const { 
-  getAllProducts, 
+import { Router } from 'express'
+import {
+  deleteProduct,
+  getAllProducts,
   getProductsByID,
   postNewProduct,
   putProductByID,
-  deleteProduct 
-  } = require('../controllers');
+
+} from '../controllers/index.js';
 
 
-const route = new Router();
+export const route = new Router();
 
 
 route.get('/', getAllProducts);
 route.get('/:id', getProductsByID);
-route.post('/nuevo', postNewProduct);
+route.post('/' ,postNewProduct);
 route.put('/:id', putProductByID);
 route.delete('/:id', deleteProduct);
-
-module.exports = route;
