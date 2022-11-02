@@ -30,7 +30,7 @@ En este desafio numero cinco se debe utilizar la API del anterior desafio para l
 ## Ejecutar programa 
 ```
   git clone: https://github.com/leandroquiroga/coderhouse-backend.git
-  cd desafio-cuatro
+  cd desafio-cinco
   npm install 
   npm run dev
   Codear a pleno :)
