@@ -1,0 +1,14 @@
+extends ./layout/index
+
+block main
+  h1.text-center.my-4 #{title}
+  a.btn.btn-danger(href='./home') Cargar Nuevo producto
+  main.container 
+    section.container_card
+      each producto in productos
+        article.card(style='width 18rem')
+          img.img-fluid.rounded-start(src=`${producto.url_imagen}'` alt=`${producto.name}`)
+          .card-body  
+            h5.card-title #{producto.name}
+            p.cart-text $#{producto.price}
+    
