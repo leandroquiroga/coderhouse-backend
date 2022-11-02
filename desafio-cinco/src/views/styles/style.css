@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container_card{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  column-gap: 15px;
+  row-gap: 10px;
+  place-content: center;
+}
