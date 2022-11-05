@@ -1,0 +1,26 @@
+{
+  "name": "web-sokect",
+  "version": "0.1.0",
+  "description": "Aplicacion con web Socket ",
+  "main": "app.js ",
+  "scripts": {
+    "start": "node app",
+    "dev" : "nodemon app"
+  },
+  "type": "module",
+  "keywords": [
+    "Sokect.io",
+    "Node.js",
+    "Coderhouse",
+    "Backend",
+    "Websocket"
+  ],
+  "author": "Leandro Quiroga",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "socket.io": "^4.5.3"
+  }
+}
