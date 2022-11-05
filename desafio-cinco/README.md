@@ -11,7 +11,9 @@ En este desafio numero cinco se debe utilizar la API del anterior desafio para l
 * c) Ambas páginas contarán con un botón que redirija a la otra.
 
 2- Manteniendo la misma funcionalidad reemplazar el motor de plantillas handlebars por pug.
+
 3- Manteniendo la misma funcionalidad reemplazar el motor de plantillas handlebars por ejs.
+
 4- Por escrito, indicar cuál de los tres motores de plantillas prefieres para tu proyecto y por qué.
 
 
@@ -30,7 +32,7 @@ En este desafio numero cinco se debe utilizar la API del anterior desafio para l
 ## Ejecutar programa 
 ```
   git clone: https://github.com/leandroquiroga/coderhouse-backend.git
-  cd desafio-cuatro
+  cd desafio-cinco
   npm install 
   npm run dev
   Codear a pleno :)
