@@ -1,0 +1,35 @@
+extends ./layout/index.pug
+
+
+block main
+  h1.text-center.my-3 #{title}
+  form.form-control.shadow
+    .mb-3
+      label.form-label(for='name') Nombre del producto
+      input#name.form-control(type='text' placeholder='Ingrese el nombre del producto')
+    .mb-3
+      label.form-label(for='price') Precio del produto
+      input#price.form-control(type='text' placeholder='Ingrese un precio')
+    .mb-3
+      label.form-label(for='url_image') Url de la imagen
+      input#url_image.form-control(type='url' placeholder='Ingrese un URL de la imagen')
+    .mb-3
+      button#enviar.btn.btn-danger(type='type') Guardar
+    .mb-3
+      p#mensaje.text-danger   
+
+  h2.text-center.my-4.fs-1 #{subtitle}
+  section.shadow 
+    
+  if(productos.length === 0)
+    p.text-center No hay productos disponibles
+  
+  section.container_card
+  each producto in productos
+    article.card(style='width 18rem')
+      img.img-fluid.rounded-start(src=`${producto.url_imagen}'` alt=`${producto.name}`)
+      .card-body  
+        h5.card-title #{producto.name}
+        p.cart-text $#{producto.price}
+  script
+    include ./js/index.js 
