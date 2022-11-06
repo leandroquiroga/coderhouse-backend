@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { request, response } from 'express';
+const { Router } = require('express');
+const pageInitController = require('../controllers/index.js');
 
-import pageInitController from '../controllers/index.js';
 const router = new Router();
 
 router.get('/', pageInitController);
 
-export default router;
+
+module.exports = router;
