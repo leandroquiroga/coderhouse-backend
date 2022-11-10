@@ -11,15 +11,15 @@ button.addEventListener('click', (e) => {
   e.preventDefault();
 
   // Obtenemos los valores
-  let name = document.querySelector('#name');
-  let price = document.querySelector('#price');
-  let url_imagen = document.querySelector('#url_image');
+  let name = document.querySelector('#name').value;
+  let price = document.querySelector('#price').value;
+  let url_imagen = document.querySelector('#url_image').value;
 
   // Armamos el nuevo producto con un id
   const nuevoProducto = {
-    name: name.value,
-    price: price.value,
-    url_imagen: url_imagen.value,
+    name: name,
+    price: price,
+    url_imagen: url_imagen,
     user: socket.id
   };
 
