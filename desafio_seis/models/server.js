@@ -7,7 +7,8 @@ const cors = require('cors');
 const { Server: Socket } = require('socket.io')
 
 const router = require('../routes/index.js');
-const productos = require('../data/productos.json')
+// const productos = require('../data/productos.json');
+const socketController = require('../controllers/socket_controller.js');
 class Server {
   
   constructor() {
@@ -37,27 +38,10 @@ class Server {
     this.app.use('/v1/productos', router);
   };
 
-  socket() {
-    this.io.on('connection', (socket) => {
-      console.log('User connected');
-
-      const data = fs.promises.readFile('data/productos.json', 'utf-8');
-      
-      const productos = JSON.stringify(data);
-      
-      socket.emit('productos', productos);
-
-      socket.on('nuevo_producto', producto => {
-
-        productos.push(producto);
-        
-        this.io.emit('productos', productos)
-      })
-    });
-  }
+   socket() {
+    this.io.on('connection', socketController)
+  };
   
-  //TODO: Realizar el ultimo paso, que es guardar en el json el nuevo producto
-  //TODO: Realizar un controlador que se encargue de toda la logica del socket
   //TODO: Realizar el chat entre el cliente y el servidor
 
   listen() {
