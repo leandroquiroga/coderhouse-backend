@@ -20,16 +20,14 @@ block main
 
   h2.text-center.my-4.fs-1 #{subtitle}
   section.shadow 
-    
-  if(productos.length === 0)
-    p.text-center No hay productos disponibles
-  
-  section.container_card
-  each producto in productos
-    article.card(style='width 18rem')
-      img.img-fluid.rounded-start(src=`${producto.url_imagen}'` alt=`${producto.name}`)
-      .card-body  
-        h5.card-title #{producto.name}
-        p.cart-text $#{producto.price}
+    if(allProducts.length === 0)
+      p.text-center No hay productos disponibles
+    section.container_card
+      each product in allProducts
+        article.card(style='width 18rem')
+          img.img-fluid.rounded-start(src=`${product.url_imagen}'` alt=`${product.name}`)
+          .card-body  
+            h5.card-title #{product.name}
+            p.cart-text $#{product.price}
   script
     include ./js/index.js 
