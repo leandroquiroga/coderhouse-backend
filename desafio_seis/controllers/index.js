@@ -1,4 +1,5 @@
 const { request, response } = require('express');
+const chats = require('../models/chat.js');
 const products = require('../models/productos.js')
 
 const pageInitController = async (_req = request, res = response, socket) => {
@@ -11,4 +12,16 @@ const pageInitController = async (_req = request, res = response, socket) => {
   })
 };
 
-module.exports = pageInitController;
+const pageChatController = async (_req = request, res = response, socket) => {
+
+  res.render('chat', {
+    page: 'Chat',
+    title: 'Bienvenidos a nuestro chat',
+    allChats: await chats.getAllChats()
+  })
+};
+
+module.exports = {
+  pageInitController,
+  pageChatController
+};
