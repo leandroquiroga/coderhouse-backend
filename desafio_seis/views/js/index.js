@@ -1,5 +1,3 @@
-
-
 const socket = io();
 const button = document.querySelector('#enviar');
 
@@ -41,6 +39,5 @@ button.addEventListener('click', (e) => {
     // Lo hago para que se renderize la pagina
     window.location.href = url;
   });
-
   
 });
