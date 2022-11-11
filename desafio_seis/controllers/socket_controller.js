@@ -5,9 +5,9 @@ const socketController = async (socket) => {
   socket.emit('all_products', await products.getAllProducts());
 
   // Escucha el nuevo producto ingresado 
-  socket.on('new_product', async(payload, callback) => {
+  socket.on('new_product', async (payload, callback) => {
     
-    const {name, price, url_imagen} = payload
+    const { name, price, url_imagen } = payload
 
     // Chequeamos que llegue los datos correctos
     if (name === '' || price === '' || url_imagen === '') {
@@ -32,4 +32,4 @@ const socketController = async (socket) => {
 };
 
 
-module.exports = socketController;
+module.exports = socketController
