@@ -1,9 +1,13 @@
 const { Router } = require('express');
-const pageInitController = require('../controllers/index.js');
+const {pageChatController, pageInitController} = require('../controllers/index.js');
 
 const router = new Router();
+const routerChat = new Router();
 
 router.get('/', pageInitController);
+routerChat.get('/', pageChatController);
 
-
-module.exports = router;
+module.exports = {
+  router,
+  routerChat
+};
