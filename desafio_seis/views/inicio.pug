@@ -1,9 +1,9 @@
 extends ./layout/index.pug
 
-
 block main
   h1.text-center.my-3 #{title}
-  form.form-control.shadow
+  a.btn.btn-danger.my-2(href='chat') Ir a Chat
+  form.form-control.shadow.zindex-dropdown
     .mb-3
       label.form-label(for='name') Nombre del producto
       input#name.form-control(type='text' placeholder='Ingrese el nombre del producto')
@@ -15,19 +15,18 @@ block main
       input#url_image.form-control(type='url' placeholder='Ingrese un URL de la imagen')
     .mb-3
       button#enviar.btn.btn-danger(type='type') Guardar
-    .mb-3
-      p#mensaje.text-danger   
 
-  h2.text-center.my-4.fs-1 #{subtitle}
-  section.shadow 
+  h2.text-center.my-4.fs-1.zindex-dropdown #{subtitle}
+  section.shadow.zindex-dropdown
     if(allProducts.length === 0)
       p.text-center No hay productos disponibles
-    section.container_card
+    section.container_card.zindex-dropdown
       each product in allProducts
-        article.card(style='width 18rem')
+        article.card(style='width 18rem; z-index -100')
           img.img-fluid.rounded-start(src=`${product.url_imagen}'` alt=`${product.name}`)
           .card-body  
             h5.card-title #{product.name}
             p.cart-text $#{product.price}
+
   script
     include ./js/index.js 
