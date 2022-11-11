@@ -6,10 +6,10 @@ const express = require('express');
 const cors = require('cors');
 const { Server: Socket } = require('socket.io')
 
-const router = require('../routes/index.js');
-// const productos = require('../data/productos.json');
-const socketController = require('../controllers/socket_controller.js');
-class Server {
+const {router, routerChat} = require('../routes/index.js');
+const socketControllerChat = require('../controllers/socket_chat_controller.js');
+const socketController = require('../controllers/socket_controller.js')
+class Server { 
   
   constructor() {
     this.app    = express();
@@ -36,14 +36,14 @@ class Server {
 
   router() {
     this.app.use('/v1/productos', router);
+    this.app.use('/v1/chat', routerChat);
   };
 
    socket() {
-    this.io.on('connection', socketController)
+     this.io.on('connection', socketController );
+     this.io.on('connection', socketControllerChat);
   };
   
-  //TODO: Realizar el chat entre el cliente y el servidor
-
   listen() {
     this.server.listen(this.port,
       (this.port)
