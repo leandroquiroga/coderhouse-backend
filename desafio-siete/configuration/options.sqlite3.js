@@ -1,7 +1,9 @@
+const path = require('path');
+
 const options = {
   client: 'sqlite3',
   connection: {
-    filename: './../database/ecommerceDB.sqlite', 
+    filename: path.resolve(__dirname, '../data/ecommerceDB.sqlite' )
   },
   userNullAsDefault: true,
 };
