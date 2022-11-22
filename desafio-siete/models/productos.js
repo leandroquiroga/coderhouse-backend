@@ -16,9 +16,7 @@ class Products {
     try {      
       const products = await fs.promises.readFile('./data/products.json', 'utf-8');
       const arrProducts = JSON.parse(products);
-
       return arrProducts;
-
     } catch (err) {
       throw new Error(err)
     };
@@ -27,23 +25,17 @@ class Products {
   // Almacenamos un nuevo producto
   async newProduct(newProduct) {
     const products = await this.getAllProducts();
-
     products.push(newProduct);
-
     await fs.promises.writeFile('./data/products.json', JSON.stringify(products));
-
-    return products
+    return products;
   };
 
   // Almacenamos un nuevo producto a la bases de datos; 
   async insertDB(newProduct) {
     try {
       const knex = knexDB(this.configDB);
-
       await knex('products').insert(newProduct);
-      
       knex.destroy();
-      
       return {
         status: true,
         message: 'Se ha agregado un nuevo producto'
@@ -59,18 +51,13 @@ class Products {
   async getAllProductsDB() {
     try {
       const knex = knexDB(this.configDB);
-
       const data = await knex
         .from('products')
         .select('name', 'url_imagen', 'price');
-      
       knex.destroy();
-
-      return data
-      // return JSON.parse(JSON.stringify(data[0]));
-                            
-    } catch (erro) {
-      
+      return data;          
+    } catch (err) {
+      throw new Error(err);
     }
   }
 };
