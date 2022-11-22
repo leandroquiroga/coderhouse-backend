@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app",
     "dev": "nodemon app",
-    "db:dev": "node ./models/product.schema.js"
+    "db:mariaDB": "node ./models/product.schema.js",
+    "db:sqlite": "node ./models/chat.schema.js"
   },
   "type": "commonjs",
   "keywords": [
