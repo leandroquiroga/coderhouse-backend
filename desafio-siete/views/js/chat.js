@@ -8,13 +8,13 @@ btn.addEventListener('click', (e) => {
   e.preventDefault();
 
   // Obtenemos los valores
-  let nombre = document.querySelector('#nombre').value;
-  let texto = document.querySelector('#texto').value;
+  let name = document.querySelector('#nombre').value;
+  let message = document.querySelector('#texto').value;
 
 
   const mensaje = {
-    nombre,
-    texto
+    name,
+    message
   };
 
   socket.emit('new_message_client', mensaje, (data) => {
