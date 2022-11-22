@@ -1,0 +1,26 @@
+extends ./layout/index.pug
+
+
+block  main
+  section
+    h1.text-center.my-3 #{title}
+    a.btn.btn-danger.my-2(href='productos') Voler a productos
+    form
+      .mb-3
+        input#nombre.form-control(type='text' placeholder='Ingrese su nombre')
+      .mb-3
+        input#texto.form-control(type='text' placeholder='Cuentame algo')
+      .mb-3
+        button#enviar.btn.btn-danger.w-100(type='button') Enviar
+    article 
+
+  section 
+    if(allChats.length === 0)
+      p.text-center No hay chats disponibles
+    each chat in allChats 
+      p.fs-bold Usuario: #{chat.nombre}
+      small Mensaje: #{chat.texto}
+      hr
+  script
+    include ./js/chat.js 
+
