@@ -17,7 +17,7 @@ const pageChatController = async (_req = request, res = response, socket) => {
   res.render('chat', {
     page: 'Chat',
     title: 'Bienvenidos a nuestro chat',
-    allChats: await chats.getAllChats()
+    allChats: await chats.getAllChatsDB()
   })
 };
 
