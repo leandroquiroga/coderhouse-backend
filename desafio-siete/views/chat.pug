@@ -18,8 +18,8 @@ block  main
     if(allChats.length === 0)
       p.text-center No hay chats disponibles
     each chat in allChats 
-      p.fs-bold Usuario: #{chat.nombre}
-      small Mensaje: #{chat.texto}
+      p.fs-bold Usuario: #{chat.name}
+      small Mensaje: #{chat.message}
       hr
   script
     include ./js/chat.js 
