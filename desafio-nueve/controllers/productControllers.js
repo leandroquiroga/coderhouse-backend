@@ -1,9 +1,6 @@
 const { request, response } = require("express");
 const products = require("../models/products");
 
-
-
-
 const productControllers = (req = request, res = response) => {
 
   if (req.query.count) {
