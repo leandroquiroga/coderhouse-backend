@@ -1,0 +1,40 @@
+include ./layout/index.pug
+
+block main
+  section.p-2.text-center
+    h1 Centro de mensajes
+    span ( Compresión de mensajes: #{average}%)
+
+    form.w-100.mt-2
+      .mb-3
+        input#userName.form-control(type='text' placeholder='Ingrese su nombre de usuario')
+      .mb-3
+        input#name.form-control(type='text' placeholder = 'Ingrese su nombre')
+      .mb-3
+        input#lastName.form-control(type='text' placeholder = 'Ingrese su apellido')
+      .mb-3
+        input#year.form-control(type='number' placeholder = 'Ingrese su edad')
+      .mb-3
+        input#alias.form-control(type='text' placeholder = 'Ingrese su alias')
+      .mb-3
+        input#avatar.form-control(type='text' placeholder = 'Ingrese su avatar')
+      .mb-3
+        textarea#message.form-control(cols='30', rows='10') 
+      .mb-3
+        button#enviar.btn.btn-danger.w-100(type='button') Enviar
+    
+  section.p-2.text-center
+    h3 Centro de mensajes
+    article.container
+      each user in allUsers
+        each chat in allChats
+          if(user.idAuthor === chat.idText)
+            .d-flex.justify-content-between
+              p.text-center #{user.alias}
+              small #{chat.message}
+              img.rounded-4.img_class_circle(src= user.avatar, alt="avatar")
+              
+
+
+  script 
+    include ./js/index.js
