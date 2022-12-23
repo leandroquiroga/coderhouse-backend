@@ -7,6 +7,7 @@ const { Server: Socket } = require('socket.io');
 
 const envirioment = require('../configuration/envirioment');
 const router = require('../router');
+const socketController = require('../controllers/socketController');
 
 
 class Server{
@@ -21,7 +22,7 @@ class Server{
     this.middeleware();
     this.router();
     this.templeates();
-    // this.socket()
+    this.socket();
   };
 
   middeleware() {
@@ -40,13 +41,13 @@ class Server{
   };
 
   socket() {
-    this.io.on('connection' /* chatSocketController */)
+    this.io.on('connection', socketController);
   };
 
   listen() {
     this.server.listen(this.port , () => {
       (this.port)
-        ? console.log(`Server running on http://${this.url}:${this.port}`)
+        ? console.log(`Server running on http://${this.url}:${this.port}/api`)
         : console.log(`Server faild, please contact with administrator`)
     });
   };
