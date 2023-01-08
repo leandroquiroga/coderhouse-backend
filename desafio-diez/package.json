@@ -1,0 +1,30 @@
+{
+  "name": "desafio-diez",
+  "version": "1.0.0",
+  "description": "Desafio numero diez, integracion de login-formulario ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+  "keywords": [
+    "coderhouse",
+    "backend",
+    "login",
+    "mongodb"
+  ],
+  "author": "Leandro Quiroga",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.3",
+    "pug": "^3.0.2",
+    "socket.io": "^4.5.4"
+  },
+  "devDependencies": {
+    "connect-mongo": "^4.6.0"
+  }
+}
