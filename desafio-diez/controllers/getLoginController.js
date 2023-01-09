@@ -2,11 +2,12 @@ const { request, response } = require("express");
 
 
 const loginController = (req = request, res = response) => {
-  res.status(200).json({
-    message: 'OK',
-    state: true,
-    status: 200
-  })
+
+  console.log(req.body)
+  res.render('login', {
+    page: 'Login',
+    title: 'Iniciar Sesion'
+  });
 };
 
 module.exports = loginController;
