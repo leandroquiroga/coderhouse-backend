@@ -1,0 +1,34 @@
+extends ./layout/index.pug
+
+block main
+  article.container.rounded.bg-primary.d-flex.column.justify-content-between.align-items-center.my-4
+    p.text-center.my-3.text-white.fs-4.fw-bold #{info} - #{name}
+    button.btn.btn-light.h-25#logout Cerrar Sesion
+  h1.text-center.my-3 #{title}
+  form.form-control.shadow.zindex-dropdown
+    .mb-3
+      label.form-label(for='name') Nombre del producto
+      input#name.form-control(type='text' placeholder='Ingrese el nombre del producto')
+    .mb-3
+      label.form-label(for='price') Precio del produto
+      input#price.form-control(type='text' placeholder='Ingrese un precio')
+    .mb-3
+      label.form-label(for='url_image') Url de la imagen
+      input#url_image.form-control(type='url' placeholder='Ingrese un URL de la imagen')
+    .mb-3
+      button#enviar.btn.btn-danger(type='type') Guardar
+    span.text-danger.fw-bold.text-center#errorMessage 
+  h2.text-center.my-4.fs-1.zindex-dropdown #{subtitle}
+  section
+    if(allProducts.length === 0)
+      p.text-center No hay productos disponibles
+    section.container_card.shadow.zindex-dropdown
+      each product in allProducts
+        article.card(style='width 18rem; z-index -100')
+          img.img-fluid.rounded-start(src=`${product.url_imagen}'` alt=`${product.name}`)
+          .card-body  
+            h5.card-title #{product.name}
+            p.cart-text $#{product.price}
+
+  script
+    include ./js/home.js 
