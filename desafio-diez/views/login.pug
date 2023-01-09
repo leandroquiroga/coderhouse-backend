@@ -1,0 +1,13 @@
+extends ./layout/index.pug
+
+block main
+  h1.text-center.my-3 #{title}
+  form.form-control.shadow.zindex-dropdown.d-flex.row
+    .mb-3.d-flex.row
+      label.form-label.text-center(for='name') Ingrese su nombre
+      input#nameSesion.form-control(type='text' placeholder='Ingrese su nombre')
+    .mb-3
+      button#sesion.btn.btn-danger.w-100(type='type') Iniciar Sesion
+    span.text-danger.text-center Por favor ingrese un nombre
+  script
+    include ./js/login.js 
