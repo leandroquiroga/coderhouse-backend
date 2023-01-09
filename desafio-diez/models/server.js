@@ -1,3 +1,4 @@
+const path = require('path');
 const { createServer } = require('http');
 
 const express = require('express');
@@ -7,6 +8,8 @@ const { Server: Socket } = require('socket.io');
 const { envieroment } = require('../configuration/envieroment');
 const router = require('../router');
 const { errorServer, pageNotExist } = require('../middlewares');
+const dbConnect = require('../configuration/db.connect');
+const socketControllers = require('../controllers/socketController');
 
 class Server {
   constructor() {
@@ -16,10 +19,16 @@ class Server {
     this.server = createServer(this.app);
     this.io = new Socket(this.server);
     
+    this.dbConnect()
     this.middleware()
+    this.template();
     this.router();
     this.error();
   };
+
+  async dbConnect() {
+    await dbConnect()
+  }
 
   middleware() {
     this.app.use(cors());
@@ -27,10 +36,17 @@ class Server {
     this.app.use(express.urlencoded({ extended: true }));
   };
 
+  template() {
+    this.app.set('view engine', 'pug');
+    this.app.set('views', path.join(__dirname + './../views'))
+  }
   router() {
     this.app.use('/v1', router);
   };
 
+  socket() {
+    this.io.on('connection', socketControllers)
+  }
   error() {
     this.app.use(pageNotExist);
     this.app.use(errorServer);
