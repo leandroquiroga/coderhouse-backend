@@ -1,14 +1,15 @@
 const { request, response } = require("express");
+const productos = require("../models/productos");
 
 
-const homeController = (req = request, res = response) => {
+const homeController = async (req = request, res = response) => {
   res.render('home', {
     page: 'Home',
     info: 'Bienvenido',
-    name: 'Leandro',
+    name: req.session.name,
     title: 'Dashboard',
     subtitle: 'Products',
-    allProducts: []
+    allProducts: await productos.getProductos()
   });
 };
 

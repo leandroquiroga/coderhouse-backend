@@ -2,26 +2,31 @@ const path = require('path');
 const { createServer } = require('http');
 
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const { Server: Socket } = require('socket.io');
+const cookieParser = require('cookie-parser');
 
 const { envieroment } = require('../configuration/envieroment');
 const router = require('../router');
 const { errorServer, pageNotExist } = require('../middlewares');
 const dbConnect = require('../configuration/db.connect');
 const socketControllers = require('../controllers/socketController');
+const sessionConfig = require('../configuration/session.config');
 
 class Server {
   constructor() {
     this.app  = express();
     this.port = envieroment.URI_PORT;
     this.url = envieroment.URI_URL;
+    this.cookies = envieroment.COOKIES_SECRET;
     this.server = createServer(this.app);
     this.io = new Socket(this.server);
     
-    this.dbConnect()
+    this.dbConnect();
     this.middleware()
     this.template();
+    this.socket();
     this.router();
     this.error();
   };
@@ -34,6 +39,8 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cookieParser(this.cookies))
+    this.app.use(session(sessionConfig))
   };
 
   template() {

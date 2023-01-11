@@ -8,6 +8,6 @@ block main
       input#nameSesion.form-control(type='text' placeholder='Ingrese su nombre')
     .mb-3
       button#sesion.btn.btn-danger.w-100(type='type') Iniciar Sesion
-    span.text-danger.text-center Por favor ingrese un nombre
+    span.text-danger.text-center#errorMessage
   script
     include ./js/login.js 

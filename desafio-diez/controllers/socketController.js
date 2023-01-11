@@ -2,8 +2,11 @@ const productos = require("../models/productos");
 
 
 const socketControllers = async (socket) => {
-  socket.emit('ALL_ PRODUCTS', await productos.getProductos());
+
+  socket.emit('ALL_PRODUCTS', await productos.getProductos());
+
   socket.on('NEW_PRODUCTS', async (data, callback) => {
+
     const { name, price, url_image } = data;
     const arrProperties = [name, price, url_image];
 
@@ -15,7 +18,7 @@ const socketControllers = async (socket) => {
     };
 
     await productos.nuevoProducto(data);
-    socket.broadcast.emit('ALL_ PRODUCTS', await productos.getProductos());
+    socket.broadcast.emit('ALL_PRODUCTS', await productos.getProductos());
     callback({
       status: true,
       message: 'Se agrego un nuevo producto'

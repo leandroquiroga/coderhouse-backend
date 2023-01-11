@@ -8,7 +8,9 @@ class Productos {
   async getProductos() {
     try {
       this.productos = await schemaProductos.find();
-      return this.productos;
+      if (this.productos) return this.productos;
+      
+      return []
     } catch (error) {
       throw new Error(error);
     };

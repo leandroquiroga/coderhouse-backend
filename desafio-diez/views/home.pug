@@ -5,7 +5,7 @@ block main
     p.text-center.my-3.text-white.fs-4.fw-bold #{info} - #{name}
     button.btn.btn-light.h-25#logout Cerrar Sesion
   h1.text-center.my-3 #{title}
-  form.form-control.shadow.zindex-dropdown
+  form.form-control.shadow.zindex-dropdown.d-flex-justify-content-center.row
     .mb-3
       label.form-label(for='name') Nombre del producto
       input#name.form-control(type='text' placeholder='Ingrese el nombre del producto')
@@ -16,8 +16,8 @@ block main
       label.form-label(for='url_image') Url de la imagen
       input#url_image.form-control(type='url' placeholder='Ingrese un URL de la imagen')
     .mb-3
-      button#enviar.btn.btn-danger(type='type') Guardar
-    span.text-danger.fw-bold.text-center#errorMessage 
+      button#enviar.btn.btn-danger.w-100(type='type') Guardar
+    p.text-danger.fw-bold.text-center#errorMessage 
   h2.text-center.my-4.fs-1.zindex-dropdown #{subtitle}
   section
     if(allProducts.length === 0)

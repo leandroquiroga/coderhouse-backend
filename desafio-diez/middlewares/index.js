@@ -16,7 +16,15 @@ const errorServer = (error, req, res, next) => {
   });
 };
 
+
+const validateSession = (req, res, next) => {
+  if (!res.cookies.name === req.body.name) {
+    return res.redirect('/v1/auth/login')
+  };
+  next()
+}
 module.exports = {
   pageNotExist, 
-  errorServer
+  errorServer,
+  validateSession
 }

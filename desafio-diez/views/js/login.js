@@ -1,14 +1,35 @@
 const btnSesion = document.querySelector('#sesion');
 
 btnSesion.addEventListener('click', (e) => {
-  e.preventDefault();
   
+  e.preventDefault();
   const name = document.querySelector('#nameSesion').value;
+  const data = { name };
+  // Comunicacion con el servidor para logear el usuario
+  const url = 'http://localhost:8080/v1/auth/login';
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data),
+  })
+    .then(data => data.json())
+    .then((data) => {
+      const { message, status } = data;
+      if (!status) {
+        console.log(data);
+        let errorMessage = document.querySelector('#errorMessage'); 
+        errorMessage.textContent = message;
 
-  if (!name) {
-    console.log('Por favor ingrese su nombre');
-    return
-  }
+        setTimeout(() => {
+          errorMessage.textContent = '';
+        }, 2500);
 
-  // Realizar la comunicacion con el servidor para logear el usuario
+        return
+      };
+
+      window.location.href = 'http://localhost:8080/v1/home'
+    });
+
 });
