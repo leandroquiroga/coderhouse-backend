@@ -12,6 +12,7 @@ const passportConfig = require('../configuration/passport.config');
 const passport = require('passport');
 const socketControllers = require('../controllers/socketControllers');
 const dbConnect = require('../database/database.connect');
+const { pageNotExist, errorServer } = require('../middlewares');
 
 
 class Server { 
@@ -24,9 +25,10 @@ class Server {
 
     this.dbConnect();
     this.middleware();
-    this.socket();
+    this.sockets();
     this.router();
     this.template();
+    this.errorHandler();
   };
 
   async dbConnect() {
@@ -50,8 +52,13 @@ class Server {
     this.app.set('views', path.join(__dirname + './../views'));
   };
 
-  socket() {
-    this.io.on('connection', socketControllers);
+  sockets() {
+    this.socket.on('connection', socketControllers);
+  };
+
+  errorHandler() {
+    this.app.use(pageNotExist);
+    this.app.use(errorServer);
   }
   listen() {
     this.server.listen(this.port, () => {
