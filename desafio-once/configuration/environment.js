@@ -3,7 +3,8 @@ const environment = {
   URI: process.env.URI || 8000,
   PASSPORT_SECRET: process.env.PASSPORT_SECRET || '',
   EXPIRATION_TIME: Number(process.env.EXPIRATION_TIME) || 10000,
-  URI_DB: process.env.URI_DB || ''
+  URI_DB: process.env.URI_DB || '',
+  JWT_PRIVATE_KEY: process.env.JWT_PRIVATE_KEY || '',
 };
 
 module.exports = { environment };
