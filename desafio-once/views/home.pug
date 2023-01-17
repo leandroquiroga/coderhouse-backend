@@ -1,9 +1,7 @@
 extends ./layout/index.pug
 
 block main
-  article.container.rounded.bg-primary.d-flex.column.justify-content-between.align-items-center.my-4
-    p.text-center.my-3.text-white.fs-4.fw-bold #{info} - #{name}
-    button.btn.btn-light.h-25#logout Cerrar Sesion
+  button.btn.btn-primary.h-25.my-3#logout Cerrar Sesion
   h1.text-center.my-3 #{title}
   form.form-control.shadow.zindex-dropdown.d-flex-justify-content-center.row
     .mb-3
@@ -29,3 +27,5 @@ block main
           .card-body  
             h5.card-title #{product.name}
             p.cart-text $#{product.price}
+  script 
+    include ./js/home.js
