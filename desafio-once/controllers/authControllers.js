@@ -1,76 +1,76 @@
 const { request, response } = require("express");
-
-const passport = require("passport");
-const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
 
 const UserSchema = require('./../schemas/users');
-const { checkPassword, createHash } = require("./../auth/auth");
+const { checkPassword } = require("./../auth/auth");
+const { responseServerError, responseBadRequest, generateJWT } = require("../utils");
 
-const authLoginController = (_req = request, res = response) => {
-  passport.use('login', new LocalStrategy((email, password, done) => {
-    UserSchema.findOne((email)), (err, user) => {
-      if (err) return done(err);
+const authLoginController = async (req = request, res = response) => {
+  const { email, password } = req.body;
 
-      // Verifica que el usuario exista
-      if (!user) {
-        res.status(400).json({
-          status: false,
-          message: 'Email incorrecto'
-        });
-        return done(null, false)
-      };
-        
-      // Verifica que la contraseña coincida
-      if (!checkPassword(user, password)) {
-        res.status(400).json({
-          status: false,
-          message: 'Contraseña incorrecto'
-        });
-          
-        return done(null, false)
-      };
-        
-      return done(null, user);
-    }
-  },
-  ));
+  try {
+    // Buscamos el usuario
+    let user = await UserSchema.findOne({ email });
+    // Chequeamos si existe el usuario en la base de datos  
+    if (!user) return res.status(400).json(responseBadRequest);
+    
+    // Validamos contraseña
+    const validPassword = await checkPassword(user, password);
+    if (!validPassword) return res.status(400).json({
+      status: false,
+      message: 'Las contraseñas no coinciden'
+    });
+    // Generamos el token
+    const token = await generateJWT(user.id);
+    return res.status(200).json({
+      status: true,
+      name: user.name,
+      token,
+    });
+  } catch (error) {
+    res.status(500).json(responseServerError);
+  }
 };
 
-const authSingUpController = (req = request, res = response) => {
-  passport.use('singup', new LocalStrategy({
-    passReqToCallback: true
-  },
-    ( email, password, done) => {
-      UserSchema.findOne({ email }), (err, user) => {
-        if (err) return done(err);
-        
-        // Verifica si el usuario existe
-        if (user) {
-          res.status(400).json({
-            status: false,
-            message: 'El usuario ya existe, por favor ingrese otro email'
-          });
-          return done(null, false);
-        };
+const authSingUpController = async (req = request, res = response) => {
+  const { email, password, name } = req.body;
 
-        // Creamos el nuevo usuario
-        const newUser = {
-          name: req.body.name,
-          password: createHash(password),
-          email: req.body.email
-        };
+  try {
+    let user = await UserSchema.findOne({ email });
+    // Chequeamos si existe el usuario en la base de datos  
+    if (user) return res.status(400).json(responseBadRequest);
 
-        UserSchema.create(newUser, (err, userWithId) => {
-          if (err) return done(err);
+    // Encriptamos la contraseña y guardamos el usuario 
+    user = new UserSchema(req.body);
+    const saltRounds = bcrypt.genSaltSync();
+    user.password = bcrypt.hashSync(password, saltRounds);
+    await user.save();
 
-          return done(null, userWithId)
-        });
-      };
-    },
-  ))
+    // Generamos el token
+    const token = await generateJWT(user.id, name);
+
+    return res.status(200).json({
+      status: true,
+      message: 'Se ha creado un nuevo usario',
+      user,
+      token
+    });
+  } catch (error) {
+    res.status(500).json(responseServerError);
+  }
+
+};
+
+const logoutSingUpController = (_req = request, res = response) => {
+  res.render('logout', {
+    page: 'Logout',
+    title: 'Hasta luego',
+    ancla: 'Inicia Sesion'
+  }) 
 };
 
 module.exports = {
   authLoginController,
-  authSingUpController
+  authSingUpController,
+  logoutSingUpController
 }
