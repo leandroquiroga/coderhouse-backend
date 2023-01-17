@@ -1,11 +1,11 @@
-const bCryprt = require('bcrypt');
+const bcryprt = require('bcrypt');
 
-const checkPassword = (user, password) => bCryprt.compare(password, user.password);
+const checkPassword = (user, password) => bcryprt.compareSync(password, user.password);
 
 const createHash = (password) => {
-  return bCryprt.hashSync(
+  return bcryprt.hashSync(
     password,
-    bCryprt.genSaltSync(10),
+    bcryprt.genSaltSync(10),
     null
   )
 }
