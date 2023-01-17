@@ -1,10 +1,12 @@
 const { request, response } = require("express");
+const product = require("../models/products");
 
 
 const homePageController = async (_req = request, res = response) => {
+  const allProducts = product.getProductDB();
   res.render('home', {
     page: 'Home',
-    allProducts: []
+    allProducts
   })
 };
 
