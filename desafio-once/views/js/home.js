@@ -1,9 +1,11 @@
 const socket = io();
+const host = window.location.hostname;
+const port = window.location.port;
+const path = 'v1/auth/logout';
 const btnEnviar = document.querySelector('#enviar');
 const btnLogout = document.querySelector('#logout');
 const allProducts = 'ALL_PRODUCTS';
 const newProducts = 'NEW_PRODUCTS';
-
 
 socket.on(allProducts, (data) => console.log(data));
 
@@ -42,20 +44,6 @@ btnEnviar.addEventListener('click', (e) => {
 });
 
 btnLogout.addEventListener('click', () => {
-
-  const url = 'http://localhost:8080/v1/auth/logout';
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(data => data.json())
-    .then(data => {
-      console.log(data);
-      const { success } = data;
-      if (success) {
-        window.location.href = url
-      }
-    })
+  const url = `http://${host}:${port}/${path}` ;
+  window.location.href = url;
 });
