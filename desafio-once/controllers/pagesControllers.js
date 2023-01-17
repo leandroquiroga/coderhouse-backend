@@ -1,6 +1,7 @@
-const { request, response } = require("express")
+const { request, response } = require("express");
 
-const homePageController = (_req = request, res = response) => {
+
+const homePageController = async (_req = request, res = response) => {
   res.render('home', {
     page: 'Home',
     allProducts: []
