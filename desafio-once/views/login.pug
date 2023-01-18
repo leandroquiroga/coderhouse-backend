@@ -10,7 +10,9 @@ block main
       label.form-label(for='password') Ingrese su constraseña
       input#password.form-control(type='password' placeholder='Ingrese su contraseña')
     .mb-3
-      button#sesion.btn.btn-danger.w-100(type='type') Iniciar Sesion
+      button#login.btn.btn-danger.w-100(type='type') Iniciar Sesion
     .mb-3
-      a#sesion.btn.btn-danger.w-100(href='/v1/auth/singup') Registrate
+      a#register.btn.btn-danger.w-100(href='/v1/auth/singup') Registrate
     span.text-danger.text-center#errorMessage
+  script 
+    include ./js/login.js
