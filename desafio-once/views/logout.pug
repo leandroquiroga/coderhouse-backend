@@ -1,1 +1,6 @@
 extends ./layout/index.pug
+
+block main
+  article.container.bg-primary.d-flex.column.justify-between.my-4.rounded.d-flex.row
+    p.text-center.my-3.text-white.fs-4.fw-bold #{title} 
+    a.btn.btn-light.p-2.my-2(href='/v1/auth/login') #{ancla}
