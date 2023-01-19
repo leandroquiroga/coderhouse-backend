@@ -1,0 +1,25 @@
+{
+  "name": "api-restfull",
+  "version": "0.1.0",
+  "description": "Desafion numero cuatro API RESTFull",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "type": "module",
+  "keywords": [
+    "API",
+    "RESTFull",
+    "Coderhouse",
+    "Backend",
+    "Node.js"
+  ],
+  "author": "Leandro Quiroga",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,32 @@
+extends ./layout/index.pug
+
+block main
+  h1.text-center.my-3 #{title}
+  a.btn.btn-danger.my-2(href='chat') Ir a Chat
+  form.form-control.shadow.zindex-dropdown
+    .mb-3
+      label.form-label(for='name') Nombre del producto
+      input#name.form-control(type='text' placeholder='Ingrese el nombre del producto')
+    .mb-3
+      label.form-label(for='price') Precio del produto
+      input#price.form-control(type='text' placeholder='Ingrese un precio')
+    .mb-3
+      label.form-label(for='url_image') Url de la imagen
+      input#url_image.form-control(type='url' placeholder='Ingrese un URL de la imagen')
+    .mb-3
+      button#enviar.btn.btn-danger(type='type') Guardar
+
+  h2.text-center.my-4.fs-1.zindex-dropdown #{subtitle}
+  section.shadow.zindex-dropdown
+    if(allProducts.length === 0)
+      p.text-center No hay productos disponibles
+    section.container_card.zindex-dropdown
+      each product in allProducts
+        article.card(style='width 18rem; z-index -100')
+          img.img-fluid.rounded-start(src=`${product.url_imagen}'` alt=`${product.name}`)
+          .card-body  
+            h5.card-title #{product.name}
+            p.cart-text $#{product.price}
+
+  script
+    include ./js/index.js 

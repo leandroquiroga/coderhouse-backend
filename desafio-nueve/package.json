@@ -1,0 +1,28 @@
+{
+  "name": "desafio-diez",
+  "version": "1.0.0",
+  "description": "Desafio nuemero diez integracion de datos normalizados",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app",
+    "start": "node app"
+  },
+  "keywords": [
+    "coderhouese",
+    "backend",
+    "datos",
+    "normalizacion"
+  ],
+  "author": "Leandro Quiroga",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "normalizr": "^3.6.2",
+    "pug": "^3.0.2",
+    "socket.io": "^4.5.4"
+  }
+}
