@@ -1,0 +1,18 @@
+extends ./layout/index.pug
+
+block main
+  h1.text-center.my-3 #{title}
+  form.container_form.form-control.shadow.zindex-dropdown.d-flex.row
+    .mb-3
+      label.form-label(for='email') Ingrese su email
+      input#email.form-control(type='text' placeholder='Ingrese su email')
+    .mb-3
+      label.form-label(for='password') Ingrese su constraseña
+      input#password.form-control(type='password' placeholder='Ingrese su contraseña')
+    .mb-3
+      button#login.btn.btn-danger.w-100(type='type') Iniciar Sesion
+    .mb-3
+      a#register.btn.btn-danger.w-100(href='/v1/auth/singup') Registrate
+    span.text-danger.text-center#errorMessage
+  script 
+    include ./js/login.js
