@@ -28,7 +28,7 @@ router.post('/auth/singup', checkAuthPassaportError, authSingUpController);
 
 router.get('/auth/logout', logoutSingUpController);
 
-router.get('/info', infoPageController);
-router.get('/api/randoms', randomsController)
+router.get('/api/info', infoPageController);
+router.get('/api/randoms', randomsController);
 
 module.exports = router;
