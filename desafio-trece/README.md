@@ -18,7 +18,13 @@ En este desafio numero trece en donde se debe levantar un servidor con PM2 y uti
   * Incluir el archivo de configuración de nginx junto con el proyecto.
   * Incluir también un pequeño documento en donde se detallen los comandos que deben ejecutarse por línea de comandos y los argumentos que deben enviarse para levantar todas las instancias de servidores de modo que soporten la configuración detallada en los puntos anteriores.
 
-## Ejecutar programa 
+## Imagenes de las consigna
+  ![Captura desde 2023-02-07 09-41-58](https://user-images.githubusercontent.com/80013958/217260979-bab184d6-123a-4697-852e-21d855b1a140.png)
+  ![Captura desde 2023-02-07 10-24-42](https://user-images.githubusercontent.com/80013958/217261105-584565e1-c07c-4228-ab7d-48587ff8de61.png)![Captura desde 2023-02-07 10-37-43](https://user-images.githubusercontent.com/80013958/217261174-dd34608f-9393-499c-8a98-9819eb7842ca.png)![Captura desde 2023-02-07 10-38-04](https://user-images.githubusercontent.com/80013958/217261186-6607d089-339d-45cc-84bd-944248e8ad97.png)
+  ![Captura desde 2023-02-07 10-37-07](https://user-images.githubusercontent.com/80013958/217261161-1b8aacc9-c955-4697-868c-eb02c94ffb52.png)
+
+## Ejecutar programa    
+
 ```
   git clone: https://github.com/leandroquiroga/coderhouse-backend.git
   cd desafio-trece
